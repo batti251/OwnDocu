@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style/standard.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+
+
+    <script src="/script.js"></script>
+</head>
+<body onload="init()">
+    <nav class="navbar">
+        <div>
+            <a href="/index.html">Index</a>
+            <a href="/assets/js.html">Javascript Shortcuts</a>
+            <a href="/assets/html.html">HTML Forms</a>
+        </div>
+    </nav>
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+// technische Hintergründe
+
+Datenaustausch:
+Server, API's, Anwendungen kommunizieren hauptsächlich über textformate / JSON ! 
+            </code>
+        </pre>
+    </section>
+</article>
+
+<article id="json">
+    <section id="json-info">
+        <pre>
+            <code class="language-javascript">
+//JSON - Java Script Object Notation (Notation = Schreibweise)
+
+JSON ist ein String (= txt!), dessen Inhalt in Objekt-Form geschrieben ist (=Objekt Notation)
+JSON file.json
+JSON dient zum Austausch und Speichern von Daten 
+JSON ist sprachunabhängig
+
+
+JSON.parse()        // wandelt (_) in Objekt/Array
+
+JSON.stringify()    //wandelt (_) in ein String um
+=>  dient zum Senden an einen Server
+            </code>
+        </pre>
+    </section>
+</article>
+
+<article id="api">
+    <section id="api-fetch">
+    <pre><code class="language-javascript">
+ // API fetch
+ const POKE_URL = "https://pokeapi.co/api/v2/";
+ function init() {       
+   getPokeAPI("pokemon", 0, 15);
+ }
+ 
+     //einfacher Aufbau des API fetch
+ async function getPokeAPI(path = "") {                  //fetch immer asynchron!
+     const response = await fetch(POKE_URL + path);      // fetch = "rufe (URL) ab" ; returned Response-Objekt 
+     let responseRef = await response.json();            // wandelt Response-Objekt in JSON-Format um (nutzt JSON.parse())
+     let PokeAPI = responseRef.results;
+   }
+     //durch weitere Parameter ergänzbar
+ async function getPokeAPI(path = "", offset = "", limit = "") {
+   const response = await fetch(POKE_URL + path + "/?offset=" + offset + "&limit=" + limit);
+   let responseRef = await response.json();
+   let PokeAPI = responseRef.results;
+ }
+   </code></pre>
+        <button class="accordion" onclick="toggleAccordion(this)">console.log Response API</button>
+            <div class="panel">
+                <img src="/assets/img/response-api-success.png" alt="">
+            </div>
+
+            <button class="accordion" onclick="toggleAccordion(this)">console.log Response JSON</button>
+            <div class="panel">
+                <img src="/assets/img/response.json.png" alt="">
+            </div>
+            
+            <button class="accordion" onclick="toggleAccordion(this)">console.log JSON Response</button>
+            <div class="panel">
+                <img src="/assets/img/json.results.png" alt="">
+            </div>
+    </section>   
+    
+    
+    <section>
+        <pre><code class="language-javascript">
+//fetch Requests
+GET     =>  Daten vom Server abrufen
+POST    =>  neue Daten zum Server senden
+PUT     =>  vorhandene Daten vollständig ersetzen
+PATCH   =>  vorhandene Daten teilweise ändern
+DELETE  =>  Daten vom Server löschen
+ 
+
+GET
+fetch('https://example.com/data');
+=> fetch: "rufe example.com URL ab"
+
+technisch entspricht dies der GET-Methode!
+fetch('https://example.com/data', {
+    method: 'GET'
+  });
+
+
+Beispiel fetch:
+
+function init() {
+    getFireFetch("")
+  }
+
+const linkFirebase = "https://remotestorage-1e056-default-rtdb.europe-west1.firebasedatabase.app/"
+function init() {
+    setFireFetch("", {"Pokemon": "Glurak"}) 
+    // hier wird das Objekt mit dem Key "Pokemon" und dem Value "Glurak" hinbzugefügt
+    getFireFetch("")    
+    //hier kann dann auf bestimmte PFade gesteuert werden
+}
+async function getFireFetch(path="") {  //praktisch hier einen leeren Pfad vorzudefinieren
+    let response = await fetch(linkFirebase + path + ".json");
+    return responseJSON = await response.json()
+    console.log(responseJSON);
+}
+
+        </pre></code>
+    </section>
+
+
+    <section>
+        <pre><code class="language-javascript">
+
+POST
+const person = {
+    name: "Max",
+    age: 30,
+    address: {
+      street: "Hauptstraße 1",
+      city: "Berlin"
+    }
+  };
+
+function init() {
+    setFireFetch("List", {"Pokemon": "Glurak"})
+    // setzt das Objekt in den Pfad List rein
+    setFireFetch("dont-delete", person)
+    //sendet das Objekt person an an Firebase
+  }
+
+async function setFireFetch(path="", data={}) { 
+    let response = await fetch(linkFirebase + path + ".json",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":"application/json"
+
+          },
+          body: JSON.stringify(data)
+        });
+    return responseJSON = await response.json()
+}
+
+
+        </pre></code>
+        <button class="accordion" onclick="toggleAccordion(this)">POST Request Path & Data</button>
+        <div class="panel">
+            <img src="/assets/img/api-post-request.png" alt="">
+        </div>
+    </section>
+</article>
+
+
+<section>
+    <pre><code class="language-javascript">
+
+DELETE
+function init() {
+deleteFireFetch("List", {"Pokemon": "Glurak"})
+    
+}
+
+async function deleteFireFetch(path="", data={}) { 
+let response = await fetch(linkFirebase + path + ".json",
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type":"application/json"
+
+      },
+      body: JSON.stringify(data)
+    });
+return responseJSON = await response.json()
+
+}
+
+
+    </pre></code>
+</section>
+</article>
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+// Promise (= Versprechen)
+    3 Zustände:
+            -pending   (läuft noch)
+            -fulfilled (resolve)
+            -rejected  (reject)
+
+    Nutzen:
+            -API Anfragen
+            -Zeitvertzögerungen (setTimeout)
+            -Datenbankzugriffe
+
+    //einfacher Aufbau:
+new Promise((resolve, reject) => {
+  // asynchrone Logik
+});
+=> resolve(): wird ausgeführt, wenn alles gut lief
+=> reject():  wird ausgeführt, wenn ein Fehler auftritt
+=> erzeugt ein neues Promise Objekt
+
+ein fetch ist bereits ein Promise !
+
+try...catch wird mit await verwendet
+
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+for schleife
+
+
+Pokemon!
+
+map 
+
+forEach
+
+API fetch 
+
+</body>
+</html>

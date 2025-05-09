@@ -1,0 +1,37 @@
+.grid{
+    display: grid;
+    grid-template-areas: 
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+}
+
+.grid > header{
+    grid-area: header;
+    height: 80px;
+}
+
+.grid > nav {
+    grid-area: nav;
+    max-width: 240px;
+    overflow: hidden;
+}
+
+.grid > main {
+    grid-area: main;
+    height: calc(100vh - 160px);
+    width: calc(100vw - 257px);
+}
+
+.grid > aside {
+    grid-area: aside;
+    max-width: 160px;
+}
+
+.grid > footer {
+    grid-area: footer;
+    height: 80px;
+}
+
+
+

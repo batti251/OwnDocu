@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myOwnW3_local storage</title>
+    <script src="/script.js"></script>
+</head>
+
+<body>
+    <div>
+        <button onclick="toClipboard('0')">copy</button>
+        <br>LOCAL STORAGE INHALT SPEICHERN
+        <article class="copy-area">
+            <p>
+                <span style="color: blue;">function</span> saveNotesToLocalStorage(){<br>
+                localStorage.setItem("notes",JSON.stringify(notes))<br>
+                }
+            </p>
+        </article>
+    </div>
+
+    <div>
+        <button onclick="toClipboard('1')">copy</button>
+        <br>LOCAL STORAGE INHALT ABRUFEN
+        <article class="copy-area">
+            <p>
+                <span style="color: blue;">function</span> getNotesFromLocalStorage() {<br>
+                let noteObj = JSON.parse(localStorage.getItem("notes"))<br>
+                if (noteObj != null ) {<br>
+                notes = noteObj}<br>
+                }
+            </p>
+        </article>
+    </div>
+
+    <p>
+    <div>
+        <button onclick="toClipboard('2')">copy</button>
+        <br>LOCAL STORAGE INHALT LÖSCHEN <br>
+        <article class="copy-area">
+            
+            <span style="color: blue;">function</span> removeNotesFromLocalStorage() {<br>
+            localStorage.removeItem("notes",JSON.stringify(notes))<br>
+            saveNotesToLocalStorage();<br>
+            renderNotes();<br>
+            }
+            </p>
+        </article>
+    </div>
+
+
+<div>
+    <button onclick="toClipboard('3')">copy</button>
+        <br>Copy to Clipboard
+    <article class="copy-area">
+        button onclick="toClipboard()">copy/button <br>
+        function toClipboard(indexedButton) { <br>
+            let newRef = document.getElementsByClassName(''); <br>
+            newRef = newRef[indexedButton].innerText; <br>
+            navigator.clipboard.writeText(newRef); <br>
+          }
+    </article>
+</div>
+
+</body>
+
+</html>

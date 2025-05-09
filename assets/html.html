@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style/standard.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+
+<script src="/script.js"></script>
+
+
+</head>
+<body onload="init()">
+    <nav class="navbar">
+        <div>
+            <a href="/index.html">Index</a>
+            <a href="/assets/js.html">Javascript Shortcuts</a>
+        </div>
+    </nav>
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+<section>
+    <pre><code class="">
+        <form onsubmit="sendData(event)" id="form">
+            <input required type="text" placeholder="Vorname" id="first-name">
+            <input required type="text" placeholder="Nachname" id="last-name">
+            <input required type="email" placeholder="e-mail" id="email">
+            <input required type="password" placeholder="hier Ihr Passwort setzen" id="password">
+            <textarea  placeholder="Text einfügen" id="description"></textarea>
+            <button>senden</button>
+        </form>
+
+        <button onclick="deleteStorageAll()" style="height: 30px; width: auto;">LÖSCHEN</button>
+        <button onclick="showStorageAll()" style="height: 30px; width: auto;">console.log</button>
+
+
+
+        <form onsubmit="sendLogin(event)" id="login">
+            <input required type="email" placeholder="e-mail" id="email-login">
+            <input required type="password" placeholder="hier Ihr Passwort setzen" id="password-login">
+            <button>anmelden</button>
+        </form>
+
+
+
+    </pre></code>
+    <button class="accordion" onclick="toggleAccordion(this)">HTML Form Validation</button>
+
+    
+</section>
+</article>
+
+
+
+
+</body>
+</html>

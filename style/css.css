@@ -1,0 +1,156 @@
+.box {
+  height: 200px;
+  width: 200px;
+  border: solid;
+  border-color: black;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(207, 156, 14);
+  filter: drop-shadow(0 0 10px rgb(65, 60, 22));
+  border-radius: 2rem;
+  padding: 8px;
+}
+
+.center-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-div-element {
+  /*     width: 100% ;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.center-div-element:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.copied-trigger {
+  background-color: rgb(111, 190, 190);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip > .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+pre{
+  margin: 0;
+
+}
+
+h3{
+  margin: 0;
+}
+
+pre code {
+  display: block;
+  overflow-x: hidden !important;
+/*   background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: monospace; */
+/*   white-space: pre-wrap; /* optional für Zeilenumbruch */ 
+/*   scroll-behavior: auto; */
+
+
+}
+
+
+.zoom.copy-boxes:hover{
+  transform: scale(1.1);
+  transition: transform .5s;
+  z-index: 4 !important;
+  margin: 0;
+  border-color: gold;
+}
+
+.copy{
+  width: min-content;
+}
+
+.copy:hover{
+  cursor: pointer;
+}
+
+
+.container{
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+
+.copy-boxes{
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+/*   flex-grow: 1; */
+  flex-basis: 200px;
+  border: solid;
+  border-color: black;
+  border-radius: 2rem;
+  padding: 8px;
+  background-color: rgb(207, 156, 14);
+  filter: drop-shadow(0 0 10px rgb(65, 60, 22));
+}
+
+ 
+ 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden !important; /* Auf Body/HTML setzen */
+}
+      
+.overlay-module {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: rgba(240, 255, 255, 0);
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+  overflow: hidden;
+
+}
+
