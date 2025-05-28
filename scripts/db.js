@@ -50,6 +50,22 @@ const quicklinkDB = [
     link:"https://www.w3schools.com/js/js_json_syntax.asp",
     frameAncestors: true,
     Source: "W3School",
+  },
+
+  {
+    name: "linear-gradient",
+    category: "CSS",
+    link:"https://www.w3schools.com/css/css3_gradients.asp",
+    frameAncestors: true,
+    Source: "W3School"
+  },
+
+    {
+    name: "Mail Regex",
+    category: "JS",
+    link:"https://emailregex.com/",
+    frameAncestors: false,
+    Source: "external"
   }
 
   

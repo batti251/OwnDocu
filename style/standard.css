@@ -57,3 +57,8 @@ iframe{
 .d-block{
   display: block;
 }
+
+.d-center{
+  display: flex;
+  justify-content: center;
+}
