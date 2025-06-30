@@ -258,6 +258,397 @@ try...catch wird mit await verwendet
 </article>
 
 for schleife
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+for-Schleife
+
+let resultArray = []
+let resultOjb = {}
+for (let index = 0; index < array.length; index++) {
+    const element = array[index]; //Code-Block, der mit jedem Index ausgeführt wird
+    resultArray.push(array[index]) // mit jedem index, wird das Ergebnis in resultArray gepusht
+    //index ist nur innerhalb der Schleife sichtbar => Block-Scope-Variable
+}
+console.log(resultArray) // außerhalb der Schleife kann so auf das neue Array mit Inhalt zugegriffen werden
+
+continue vs break
+for (let i = 0; i < 10; i++) {
+    if (i === 3) continue;  // überspringt 3
+    if (i === 7) break;     // bricht bei 7 ab
+    console.log(i);
+  }
+</code>
+        </pre>
+    </section>
+</article>
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+return - Statement
+
+return beendet sofort die ganze Funktion, auch wenn es nur innerhalb eines Blocks ist!
+NUR return liefert undefined mit.
+Wenn ein Wert zurückgegeben werden soll, dann muss dieser an return angehangen werden. Bsp:
+
+if (responseRef === null) {
+    postJSON("user", credentials);
+    showMessage(credentials);
+    return credentials;  // Funktion gibt credentials zurück
+}
+
+if (responseRef === null) {
+    postJSON("user", credentials);
+    showMessage(credentials);
+    return;  // Funktion endet hier, ohne Wert zurückzugeben (undefined)
+}
+
+Anwendungsfälle: 
+- hilfreich bei if-Blöcken um gezielt den Ablauf zu stoppen, wenn eine Bedingung erfüllt ist
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+// Array-Methoden
+
+=> eingebaute Mehode, die auf Arrays aufgerufen werden
+=> kürzer
+=> führt Funktion für JEDES Element im Array aus - meist als Callback
+
+forEach()   => etw. mit jedem Eintrag tun
+map()       => neues Array mit transformierten(veränderten) Werten
+filter()    => bestimmte Werte filtern
+find()      => einen bestimmten Eintrag finden
+some()      => prüfen, ob mind. ein Wert zutrifft
+every()     => prüfen, ob alle Werte zutreffen
+reduce()    => einen Wert berechnen
+includes()  => prüfen, ob ein bestimmter Wert enthalten ist
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="">
+<table>
+    <tr>
+        <th>Methode</th>
+        <th>Rückgabewert</th>
+        <th>Nutzen</th>
+        <th>mutiert Array</th>
+        <th>UseCase</th>
+    </tr>
+    <tr id="forEach">
+        <td>forEach()</td>
+        <td>undefined</td>
+        <td>führt eine Funktion für <strong>jedes Element</strong> aus</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>etw. mit jedem Wert tun</td>
+    </tr>
+    <tr id="map">
+        <td>map()</td>
+        <td>neues Array [..]</td>
+        <td>gibt ein neues Array mit <strong>transformierten Werten</strong> zurück</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>Werte ändern, ohne original Array zu verändern</td>
+    </tr>
+    <tr id="filter">
+        <td>filter()</td>
+        <td>gefiltertes Array</td>
+        <td>gibt alle Elemente zurück, die iene Bedingung erfüllen</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>bestimmte Werte extrahieren</td>
+    </tr>
+    <tr id="find">
+        <td>find()</td>
+        <td>ein Element oder undefined</td>
+        <td>gibt das <strong>erste</strong> Element zurück, das eine Bedinugng erfüllt</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>suche nach einem bestimmten Eintrag</td>
+    </tr>
+    <tr id="some">
+        <td>some()</td>
+        <td>true / false</td>
+        <td>prüft, ob <strong>mindestens ein</strong> Element die Bedingung erfüllt</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>Gilt das für <italic>irgendeinen</italic> Wert?</td>
+    </tr>
+    <tr id="every">
+        <td>every()</td>
+        <td>true / false</td>
+        <td>prüft, ob <strong>alle</strong> Elemente die Bedingung erfüllen</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>gilt das für <italic>alle</italic> Werte?</td>
+    </tr>
+    <tr id="reduce">
+        <td>reduce()</td>
+        <td>ein einzelner Wert</td>
+        <td>reduziert das Array auf einen <strong>akkumulierten Gesamtwert</strong></td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>Summe, Durchschnitt, Objekt aus Array bauen</td>
+    </tr>
+    <tr id="includes">
+        <td>includes()</td>
+        <td>true / false</td>
+        <td>prüft, ob ein bestimmter Wert <strong>im Array enthalten</strong> ist</td>
+        <td><span style="color: red;"><strong>X</strong></span></td>
+        <td>Existenzprüfung eines Werts</td>
+    </tr>
+</table>
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+<article id="forEachDetail">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+//for Each()
+
+=> gibt immer undefined zurück
+=> kann nicht abgebrochen werden (wie mit break in Schleifen)
+=> kein neues Array
+
+UseCases:
+-> DOM-Elemente erstellen
+-> mit Daten interagieren (jeden User speichern, anzeigen)
+-> dynamisch UI erzeugen (Buttons für jedees Element hinzufügen)
+-> Werte in Variablen aufsammeln (Zähler erhöhen, Strings zusammenbauen)
+
+ let namen = ["Mia", "Jonas", "Lena
+ namen.forEach((name, index) => {
+   console.log(`${index + 1}. Hallo, ${name}!`);
+ 
+ 
+ 1. Hallo, Mia!
+ 2. Hallo, Jonas!
+ 3. Hallo, Lena!
+                
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+<article id="mapDetail">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+// map()
+
+=> erstellt ein <strong>neues Array</strong> in dem jedes Element transformiert wurde - entsprechend der Callback-Funktion
+=> verändert nicht das Original-Array!
+
+Use Cases:
+-> wenn ein bestehends Array in ein neues Array, mit abgeänderten Elementen, umgewandelt werden soll
+-> Werte von Arrays verändern (Berechnungen, Strings formatieren)
+-> Datenstruktur umbauen (nur bestimmte Eigenschaften extrahieren, oder neu anordnen)
+-> API-Daten umformen (Antwort von Datenbank in Frontend-Objekt umwandeln)
+
+let nutzer = [
+  { vorname: "Lena", nachname: "Meyer" },
+  { vorname: "Tom", nachname: "Schulz" },
+];
+
+let vollNamen = nutzer.map((person) => `${person.vorname} ${person.nachname}`);
+
+console.log(vollNamen); // → ["Lena Meyer", "Tom Schulz"]
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+<article id="filterDetail">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+//filter()
+
+=> erstellt <strong>neues Array</strong>, dass nur die elemente enthält, bei denen die Callback-Funkton true zurückgibt!
+=> es werden <strong>mehrere Elemente</strong> ausgegeben
+=>
+
+Use Cases:
+-> nur bestimmte Werte, Objekte behalten
+-> Arrays nach Suchkriterien filtern
+-> live-Suche, oder dynamische Anzeige (eine Liste nach Eingabe durchsuchen)
+-> Daten gezielt für Anzeige vorbereiten
+
+let nutzer = [
+  { name: "Anna", aktiv: true },
+  { name: "Ben", aktiv: false },
+  { name: "Carla", aktiv: true },
+];
+
+let aktiveNutzer = nutzer.filter((n) => n.aktiv);
+
+console.log(aktiveNutzer);
+// → [{ name: "Anna", aktiv: true }, { name: "Carla", aktiv: true }]
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+
+<article id="findDetail">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+//find()
+
+=> gibt <strong>das erste Element</strong> im Array zurück, das eine bestimmte Bedingung erfüllt
+=> wenn <strong>kein Element</strong> gefunden wird, gibt es undefined
+=> es wird <strong>nur ein Element</strong> ausgegeben
+
+Use Cases:
+-> ein <strong>bestimmtes Objekt/Wert</strong> finden (User mit bestimmter ID/Namen)
+-> erste Übereinstimmung finden
+-> Element extrahieren, ohne das Array zu verändern, oder eins zu erstellen
+
+
+let produkte = [
+  { id: 1, name: "Buch" },
+  { id: 2, name: "Stift" },
+  { id: 3, name: "Heft" },
+];
+
+let gesuchtesProdukt = produkte.find((p) => p.id === 2);
+
+console.log(gesuchtesProdukt); // → { id: 2, name: "Stift" }
+
+
+
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+
+
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+//Callback-Funktion
+
+=> eine Funktion, die übergeben wird, damit sie später ausgeführt wird. 
+   meist pro Element, oder bei einem bestimmten Ergebnis
+
+Aufbau:
+function callback(element, index, array) {
+    // Code, der für jedes Array-Element ausgeführt wird
+  }
+
+alternativ als Arrow-Function
+  (element, index, array) => {
+    // Code hier
+  }
+
+i.d.R. reicht es, wenn nur das element verwendet wird!
+
+
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
+<article id="">
+    <section id="">
+        <pre>
+            <code class="language-javascript">
+
+            </code>
+        </pre>
+    </section>
+</article>
+
+
 
 
 Pokemon!

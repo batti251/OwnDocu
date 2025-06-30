@@ -120,14 +120,7 @@
                 </code></pre>
                 </div>
 
-                
-        <div class="copy-boxes copy-area"><span><h3>d-none</h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
-            <pre><code class="language-css"> 
-.d-none {
-    display: none;
-}
-            </code></pre>
-            </div>
+
 
             <div class="copy-boxes copy-area"><span><h3>Sticky Navbar</h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
                 <pre><code class="language-css"> 
@@ -182,18 +175,90 @@
     &lt;div class="item"&gt;&lt;/div&gt;
     &lt;div class="item"&gt;&lt;/div&gt;
     /div&gt;
-    .container{
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .item{
-        flex-grow: 1;
-        flex-basis: 200px;
-        min-width: 300px;
-    }
+ .container{
+     display: flex;
+     flex-wrap: wrap;
+ }
+ .item{
+     flex-grow: 1;
+     flex-basis: 200px;
+     min-width: 300px;
+ }
+                         </code></pre>
+                         </div>
+                    <div class="copy-boxes copy-area bg-keyframe"><span><h3>Container Transition ease <br>(from right)</h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
+                         <pre><code class="language-css"> 
+ .task-overlay-wrap{
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(calc(100vw - 50%), -50%);
+     transition: transform 250ms ease;
+ }
+ .task-overlay-wrap.open {
+     transform: translate(-50%, -50%);
+ }
                             </code></pre>
                             </div>
+
+
+
+                
+        <div class="copy-boxes copy-area bg-keyframe"><span><h3>Keyframe Bottom to Mid</h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
+            <pre><code class="language-css"> 
+@keyframes slide-up{
+  from {    
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+}
+  to{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+  }
+}
+            </code></pre>
+            </div>
+
+
+
+                
+        <div class="copy-boxes copy-area bg-keyframe"><span><h3>Keyframe Mid to Corner</h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
+            <pre><code class="language-css"> 
+@keyframes mid-corner{
+  from {    
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  to{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0,0);
+  }
+}
+            </code></pre>
+            </div>
+
+                
+        <div class="copy-boxes copy-area"><span><h3></h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
+            <pre><code class="language-css"> 
+
+            </code></pre>
+            </div>
+
+                
+        <div class="copy-boxes copy-area"><span><h3></h3></span><span class="copy" onclick="toClipboardNew(this)">copy</span>
+            <pre><code class="language-css"> 
+
+            </code></pre>
+            </div>
+
 
 
 </div>

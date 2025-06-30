@@ -105,6 +105,7 @@ pre code {
   display: flex;
   margin: 10px;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
 
