@@ -1,0 +1,130 @@
+.grid {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+  grid-template-columns: 240px auto 300px;
+}
+
+header {
+  grid-area: header;
+  height: 80px;
+  border: 1px;
+  border-style: groove;
+  border-color: black;
+  box-shadow: 0 2px 24px 4px rgba(35, 23, 75, 0.2);
+  background-color: rgb(15, 90, 139);
+  background: linear-gradient(180deg, rgb(15, 90, 139), rgb(50, 150, 200));
+}
+
+nav {
+  width: 72px;
+  grid-area: nav;
+  overflow: hidden;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  box-shadow: 6px 0 3px 0px rgba(9, 34, 10, 0.2);
+  background: linear-gradient(45deg, rgb(15, 90, 139), rgb(50, 150, 200));
+  transition: width 1s;
+}
+
+footer {
+  grid-area: footer;
+  height: auto;
+}
+
+nav:hover {
+  width: 240px;
+}
+
+.menu-overview {
+  text-decoration: unset;
+  list-style: none;
+}
+
+aside {
+  grid-area: aside;
+  background-color: rgb(15, 90, 139);
+  background: linear-gradient(-45deg, rgb(15, 90, 139), rgb(50, 150, 200));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0 0 0;
+  align-items: center;
+}
+
+aside > button {
+  border-radius: 8px;
+  border-style: 0;
+  border: unset;
+  background-color: antiquewhite;
+  height: 32px;
+  width: 96px;
+}
+
+aside > button:hover {
+  cursor: pointer;
+  animation: buttonHover 0.75s infinite;
+  transform: scale(1.1);
+}
+
+@keyframes buttonHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.add-todo {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.add-todo > button {
+  background-image: url("/assets/icons/input_todo_save.svg");
+  background-size: cover;
+  background-color: unset;
+  height: 40px;
+  width: 40px;
+}
+
+.add-todo > input {
+  height: 40px;
+  border-width: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: unset;
+  list-style: none;
+  width: 200px;
+  height: 24px;
+  gap: 4px;
+}
+
+.todo-manipulation {
+  display: flex;
+  gap: 4px;
+}
+
+.todo-edit {
+  background-image: url("/assets/icons/edit_pen.svg");
+  background-size: cover;
+  background-color: unset;
+  border: unset;
+  width: 24px;
+}
+
+.todo-delete {
+  background-image: url("/assets/icons/delete_trash.svg");
+  background-size: cover;
+  background-color: unset;
+  border: unset;
+  width: 24px;
+}

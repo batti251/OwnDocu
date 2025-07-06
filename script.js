@@ -1,14 +1,61 @@
-function renderQuicklinks(){
+function initTemplate() {
+   w3.includeHTML(() => (renderCategories(),renderToDoTemplate()));
+}
+
+function renderCategories() {
+  let menuRef = document.getElementById('category')
+  menuRef.innerHTML = "";
+  for (let i = 0; i < categoryDB.length; i++) {
+    menuRef.innerHTML += getCategoryTemplate(categoryDB[i])
+  }
+}
+
+async function addToDo() {
+  let inputRef = document.getElementById('input-todo')
+  await saveDB("todo", {"todo": inputRef.value})
+  await renderToDoTemplate(inputRef.value);
+  inputRef.value = ""
+}
+
+const firebaseDB = 'https://owndoku-default-rtdb.europe-west1.firebasedatabase.app/'
+
+
+
+async function saveDB(path="", data={}) { 
+    let response = await fetch(firebaseDB + path + ".json",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":"application/json"
+          },
+          body: JSON.stringify(data)
+        });
+    return responseJSON = await response.json()
+}
+
+
+function editToDo(x) {
+  console.log(x.parentElement.parentElement);
+  
+}
+
+function deleteToDo(x) {
+  console.log(x.parentElement.parentElement);
+  
+}
+
+
+/* function renderQuicklinks(){
     let quicklinkRef = document.getElementById('quicklinks');
+    let indexedQuicklink = ""
     quicklinkRef.innerHTML = "";
     for (let quicklinkIndex = 0; quicklinkIndex < quicklinkDB.length; quicklinkIndex++) {
-        let indexedQuicklink = quicklinkDB[quicklinkIndex];
-        let frame = indexedQuicklink.frameAncestors 
-        quicklinkRef.innerHTML += quicklinkTemplate(indexedQuicklink, frame)
+         indexedQuicklink = quicklinkDB[quicklinkIndex];
+        quicklinkRef.innerHTML += menuSectionTemplate(indexedQuicklink)
 }
-}
+} */
 
-
+/* 
 function openNewTab(indexedQuicklink, frame) {
   let mainContentRef = document.getElementsByTagName('main')
 switch (frame) {
@@ -19,7 +66,7 @@ switch (frame) {
     case false:
     mainContentRef[0].innerHTML = mainContentTemplate(indexedQuicklink);
 }
-}
+} */
 
 
 function toClipboard(indexedButton) {
