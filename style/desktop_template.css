@@ -121,6 +121,14 @@ aside > button:hover {
   width: 24px;
 }
 
+.todo-edit-save {
+  background-image: url("/assets/icons/edit_save.svg");
+  background-size: cover;
+  background-color: unset;
+  border: unset;
+  width: 24px;
+}
+
 .todo-delete {
   background-image: url("/assets/icons/delete_trash.svg");
   background-size: cover;

@@ -15,3 +15,8 @@ main {
 .bg-keyframe{
     background-color: palevioletred;
 }
+
+
+.input-todo{
+width: 100%;
+}

@@ -17,9 +17,6 @@ async function addToDo() {
   inputRef.value = ""
 }
 
-const firebaseDB = 'https://owndoku-default-rtdb.europe-west1.firebasedatabase.app/'
-
-
 
 async function saveDB(path="", data={}) { 
     let response = await fetch(firebaseDB + path + ".json",
@@ -33,16 +30,52 @@ async function saveDB(path="", data={}) {
     return responseJSON = await response.json()
 }
 
+/**
+ * This Function updates data
+ * 
+ * @param {*} path 
+ * @param {*} data 
+ * @returns 
+ */
+async function updateDB(path="", data={}) { 
+    let response = await fetch(firebaseDB + path + ".json",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type":"application/json"
+          },
+          body: JSON.stringify(data)
+        });
+    return responseJSON = await response.json()
+}
 
-function editToDo(x) {
+
+function log(x) {
+  console.log(x.value);
+  
+}
+function editToDo(x, todoID) {
+  let manipulateInputRef = x.closest('.todo-item')
+  console.log(manipulateInputRef);
+  let manipulateInput = manipulateInputRef.querySelector('li')
+  console.log(manipulateInput);
+  console.log(manipulateInput.innerHTML);
+  manipulateInputRef.innerHTML = getEditInput(manipulateInput.innerHTML, todoID)
+}
+
+async function sendEditToDo(x, todoID) {
+  let editRef = x.closest('.todo-item')
+  let edit = editRef.querySelector('.input-todo')
+  await updateDB(`todo/${todoID}`, {"todo": edit.value})
+  await renderToDoTemplate()
+}
+
+
+function deleteToDo(x, todoID) {
   console.log(x.parentElement.parentElement);
   
 }
 
-function deleteToDo(x) {
-  console.log(x.parentElement.parentElement);
-  
-}
 
 
 /* function renderQuicklinks(){
